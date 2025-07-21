@@ -9,9 +9,9 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      background: radial-gradient(circle, #ffe6f0, #e6f5ff);
-      overflow: hidden;
+      background: radial-gradient(circle, #0d0d0d, #220000);
       font-family: 'Poppins', sans-serif;
+      overflow: hidden;
     }
 
     .intro {
@@ -20,7 +20,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to bottom right, #fff0f5, #f5ffff);
+      background: linear-gradient(to bottom right, #1a0000, #440000);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -30,8 +30,9 @@
 
     .intro h1 {
       font-size: 3em;
-      color: #88226b;
+      color: #fdfdfd;
       animation: floatUp 4s ease forwards;
+      text-shadow: 0 0 20px #ff4d4d;
     }
 
     @keyframes floatUp {
@@ -47,29 +48,36 @@
       position: relative;
       height: 100%;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      text-align: center;
       padding: 40px;
+      text-align: center;
       z-index: 1;
     }
 
     .glass-panel {
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(12px);
       padding: 40px;
       border-radius: 20px;
-      box-shadow: 0 0 30px rgba(255, 182, 193, 0.4);
-      max-width: 400px;
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+      max-width: 450px;
       width: 100%;
       z-index: 1;
     }
 
     .glass-panel h2 {
       font-size: 2em;
-      color: #88226b;
+      color: #ff4d4d;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-size: 1em;
+      color: #eeeeee;
       margin-bottom: 30px;
+      line-height: 1.6;
     }
 
     .link-button {
@@ -79,17 +87,17 @@
       width: 90%;
       border: none;
       border-radius: 30px;
-      background: linear-gradient(to right, #ffb6c1, #ffa07a);
+      background: linear-gradient(to right, #660000, #990000);
       color: white;
       font-weight: bold;
       font-size: 1em;
       text-decoration: none;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .link-button:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 20px #ffb6c1;
+      box-shadow: 0 0 20px #ff1a1a;
     }
 
     .petal {
@@ -98,8 +106,8 @@
       height: 40px;
       background: url('https://pngimg.com/uploads/cherry_blossom/cherry_blossom_PNG12.png') no-repeat center;
       background-size: contain;
-      animation: drift 12s linear infinite;
-      opacity: 0.6;
+      animation: drift 14s linear infinite;
+      opacity: 0.4;
       pointer-events: none;
     }
 
@@ -111,21 +119,25 @@
 </head>
 <body>
   <div class="intro">
-    <h1>Welcome to YIN GAMING 🌸</h1>
+    <h1>Welcome to YIN GAMING 🗡️</h1>
   </div>
 
   <div class="portal">
     <div class="glass-panel">
       <h2>Connect with YIN</h2>
+      <div class="description">
+        YIN GAMING is the passion project of a small content creator with a big heart. I love meeting new people, diving into video games, and building a vibrant community. Every upload, every stream is a step toward becoming the best content creator I can be. Come along for the ride!
+      </div>
       <a href="https://discord.gg/unBKrjQfpP" class="link-button" target="_blank">Discord</a>
       <a href="https://m.twitch.tv/gaming_yin" class="link-button" target="_blank">Twitch</a>
       <a href="https://x.com/yin_gaming_yt?s=" class="link-button" target="_blank">X (Twitter)</a>
+      <a href="https://youtube.com/@yin_gaming1?si=ntPdnEi42vncvFkm" class="link-button" target="_blank">YouTube</a>
     </div>
   </div>
 
   <!-- Cherry blossom petals -->
   <script>
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 30; i++) {
       const petal = document.createElement('div');
       petal.className = 'petal';
       petal.style.left = `${Math.random() * 100}vw`;
