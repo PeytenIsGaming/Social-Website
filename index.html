@@ -3,46 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YIN Links</title>
+  <title>YIN Portal</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #fff0f5;
-      text-align: center;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #ffe6f0, #e6f5ff);
       overflow: hidden;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .glass-box {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 182, 193, 0.5);
       padding: 50px;
-      position: relative;
+      text-align: center;
+      z-index: 1;
+      max-width: 400px;
+      width: 90%;
     }
+
     h1 {
+      font-size: 2em;
       color: #88226b;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
+      font-weight: 700;
     }
+
     .link-button {
       display: block;
-      margin: 15px auto;
+      margin: 20px auto;
       padding: 15px 30px;
-      width: 240px;
-      background-color: #ffb6c1;
-      color: white;
+      width: 100%;
       border: none;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 17px;
+      border-radius: 30px;
+      background: linear-gradient(to right, #ffb6c1, #ffa07a);
+      color: white;
       font-weight: bold;
-      transition: background-color 0.3s ease;
+      font-size: 1em;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      transition: transform 0.3s ease;
     }
+
     .link-button:hover {
-      background-color: #ff69b4;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #ffb6c1;
     }
+
     .petal {
       position: absolute;
-      width: 20px;
-      height: 20px;
+      width: 40px;
+      height: 40px;
       background: url('https://pngimg.com/uploads/cherry_blossom/cherry_blossom_PNG12.png') no-repeat center;
       background-size: contain;
-      animation: fall 10s linear infinite;
-      opacity: 0.8;
+      animation: fall 12s linear infinite;
+      opacity: 0.6;
+      z-index: 0;
     }
+
     @keyframes fall {
       0% {
         transform: translateY(-10%) rotate(0deg);
@@ -54,17 +80,20 @@
   </style>
 </head>
 <body>
-  <h1>Connect with YIN 🌸</h1>
-  <a href="https://discord.gg/unBKrjQfpP" class="link-button" target="_blank">Discord</a>
-  <a href="https://m.twitch.tv/gaming_yin" class="link-button" target="_blank">Twitch</a>
-  <a href="https://x.com/yin_gaming_yt?s=" class="link-button" target="_blank">X (Twitter)</a>
+  <div class="glass-box">
+    <h1>Connect with YIN 🌸</h1>
+    <a href="https://discord.gg/unBKrjQfpP" class="link-button" target="_blank">Discord</a>
+    <a href="https://m.twitch.tv/gaming_yin" class="link-button" target="_blank">Twitch</a>
+    <a href="https://x.com/yin_gaming_yt?s=" class="link-button" target="_blank">X (Twitter)</a>
+  </div>
 
-  <!-- Cherry blossom petals -->
+  <!-- Cherry blossom petals floating in background -->
   <script>
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 25; i++) {
       const petal = document.createElement('div');
       petal.className = 'petal';
       petal.style.left = `${Math.random() * 100}vw`;
+      petal.style.top = `${Math.random() * -100}px`;
       petal.style.animationDuration = `${6 + Math.random() * 6}s`;
       document.body.appendChild(petal);
     }
