@@ -3,52 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YIN Portal</title>
+  <title>YIN GAMING Portal</title>
   <style>
-    body {
+    html, body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom right, #ffe6f0, #e6f5ff);
+      padding: 0;
+      height: 100%;
+      background: radial-gradient(circle, #ffe6f0, #e6f5ff);
       overflow: hidden;
-      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .intro {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom right, #fff0f5, #f5ffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      animation: fadeOut 3s ease 4s forwards;
+    }
+
+    .intro h1 {
+      font-size: 3em;
+      color: #88226b;
+      animation: floatUp 4s ease forwards;
+    }
+
+    @keyframes floatUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    .portal {
+      position: relative;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    .glass-box {
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(255, 182, 193, 0.5);
-      padding: 50px;
+      flex-direction: column;
       text-align: center;
+      padding: 40px;
       z-index: 1;
-      max-width: 400px;
-      width: 90%;
     }
 
-    h1 {
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(12px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 182, 193, 0.4);
+      max-width: 400px;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .glass-panel h2 {
       font-size: 2em;
       color: #88226b;
       margin-bottom: 30px;
-      font-weight: 700;
     }
 
     .link-button {
       display: block;
-      margin: 20px auto;
+      margin: 15px auto;
       padding: 15px 30px;
-      width: 100%;
+      width: 90%;
       border: none;
       border-radius: 30px;
       background: linear-gradient(to right, #ffb6c1, #ffa07a);
       color: white;
       font-weight: bold;
       font-size: 1em;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
       text-decoration: none;
       transition: transform 0.3s ease;
     }
@@ -64,30 +98,32 @@
       height: 40px;
       background: url('https://pngimg.com/uploads/cherry_blossom/cherry_blossom_PNG12.png') no-repeat center;
       background-size: contain;
-      animation: fall 12s linear infinite;
+      animation: drift 12s linear infinite;
       opacity: 0.6;
-      z-index: 0;
+      pointer-events: none;
     }
 
-    @keyframes fall {
-      0% {
-        transform: translateY(-10%) rotate(0deg);
-      }
-      100% {
-        transform: translateY(110vh) rotate(360deg);
-      }
+    @keyframes drift {
+      0% { transform: translateY(-10%) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
     }
   </style>
 </head>
 <body>
-  <div class="glass-box">
-    <h1>Connect with YIN 🌸</h1>
-    <a href="https://discord.gg/unBKrjQfpP" class="link-button" target="_blank">Discord</a>
-    <a href="https://m.twitch.tv/gaming_yin" class="link-button" target="_blank">Twitch</a>
-    <a href="https://x.com/yin_gaming_yt?s=" class="link-button" target="_blank">X (Twitter)</a>
+  <div class="intro">
+    <h1>Welcome to YIN GAMING 🌸</h1>
   </div>
 
-  <!-- Cherry blossom petals floating in background -->
+  <div class="portal">
+    <div class="glass-panel">
+      <h2>Connect with YIN</h2>
+      <a href="https://discord.gg/unBKrjQfpP" class="link-button" target="_blank">Discord</a>
+      <a href="https://m.twitch.tv/gaming_yin" class="link-button" target="_blank">Twitch</a>
+      <a href="https://x.com/yin_gaming_yt?s=" class="link-button" target="_blank">X (Twitter)</a>
+    </div>
+  </div>
+
+  <!-- Cherry blossom petals -->
   <script>
     for (let i = 0; i < 25; i++) {
       const petal = document.createElement('div');
