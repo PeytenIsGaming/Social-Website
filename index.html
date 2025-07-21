@@ -12,6 +12,8 @@
       background: radial-gradient(circle, #0d0d0d, #220000);
       font-family: 'Poppins', sans-serif;
       overflow: hidden;
+      position: relative;
+      cursor: crosshair;
     }
 
     .intro {
@@ -51,7 +53,7 @@
       justify-content: center;
       padding: 40px;
       text-align: center;
-      z-index: 1;
+      z-index: 2;
     }
 
     .glass-panel {
@@ -62,7 +64,7 @@
       box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
       max-width: 500px;
       width: 100%;
-      z-index: 1;
+      z-index: 2;
       transition: all 0.3s ease;
     }
 
@@ -84,7 +86,7 @@
       padding: 15px;
       box-shadow: 0 0 10px #990000;
       cursor: pointer;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transition: all 0.4s ease-in-out;
       z-index: 2;
     }
 
@@ -99,29 +101,29 @@
       padding: 15px 30px;
       width: 90%;
       border: none;
-      border-radius: 30px;
+      border-radius: 20px;
       background: linear-gradient(to right, #660000, #990000);
       color: white;
       font-weight: bold;
       font-size: 1em;
       text-decoration: none;
       position: relative;
-      overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      z-index: 1;
+      z-index: 2;
+      overflow: hidden;
     }
 
     .link-button::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: -150%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(135deg, transparent, #ff1a1a 30%, transparent 60%);
-      opacity: 0.6;
+      top: -100%;
+      left: -100%;
+      width: 300%;
+      height: 300%;
+      background: linear-gradient(135deg, transparent, #ff1a1a, transparent);
+      opacity: 0.7;
       transform: rotate(45deg);
-      transition: left 0.4s ease;
+      transition: all 0.5s ease;
       z-index: -1;
     }
 
@@ -131,6 +133,7 @@
     }
 
     .link-button:hover::before {
+      top: 0;
       left: 0;
     }
 
@@ -139,25 +142,42 @@
     }
 
     .about-card:hover ~ .fade-buttons {
-      opacity: 0.15;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    .petal, .spark {
+      position: absolute;
       pointer-events: none;
     }
 
     .petal {
-      position: absolute;
       width: 40px;
       height: 40px;
-      background: url('https://pngimg.com/uploads/cherry_blossom/cherry_blossom_PNG12.png') no-repeat center;
-      background-size: contain;
+      background: url('https://pngimg.com/uploads/cherry_blossom/cherry_blossom_PNG12.png') center/contain no-repeat;
       animation: drift 14s linear infinite;
       opacity: 0.3;
-      pointer-events: none;
       z-index: 0;
+    }
+
+    .spark {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ff4d4d, #220000);
+      animation: floatSpark 10s linear infinite;
+      opacity: 0.6;
+      z-index: 1;
     }
 
     @keyframes drift {
       0% { transform: translateY(-10%) rotate(0deg); }
       100% { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    @keyframes floatSpark {
+      0% { transform: translateY(-10px) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(180deg); }
     }
   </style>
 </head>
@@ -170,7 +190,9 @@
     <div class="glass-panel">
       <h2>Connect with YIN</h2>
       <div class="about-zone">
-        <div class="about-card">YIN GAMING is the passion project of a small content creator with a big heart. I love meeting new people, diving into video games, and building a vibrant community. Every upload, every stream is a step toward becoming the best content creator I can be.</div>
+        <div class="about-card">
+          YIN GAMING is the passion project of a small content creator with a big heart. I love meeting new people, diving into video games, and building a vibrant community. Every upload, every stream is a step toward becoming the best content creator I can be.
+        </div>
       </div>
       <div class="fade-buttons">
         <a href="https://discord.gg/unBKrjQfpP" class="link-button" target="_blank">Discord</a>
@@ -181,8 +203,9 @@
     </div>
   </div>
 
+  <!-- Blossoms and Sparks -->
   <script>
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 25; i++) {
       const petal = document.createElement('div');
       petal.className = 'petal';
       petal.style.left = `${Math.random() * 100}vw`;
@@ -190,6 +213,30 @@
       petal.style.animationDuration = `${6 + Math.random() * 6}s`;
       document.body.appendChild(petal);
     }
+
+    for (let i = 0; i < 12; i++) {
+      const spark = document.createElement('div');
+      spark.className = 'spark';
+      spark.style.left = `${Math.random() * 100}vw`;
+      spark.style.top = `${Math.random() * -200}px`;
+      spark.style.animationDuration = `${4 + Math.random() * 6}s`;
+      document.body.appendChild(spark);
+    }
+
+    document.addEventListener('mousemove', e => {
+      const trailSpark = document.createElement('div');
+      trailSpark.className = 'spark';
+      trailSpark.style.left = `${e.clientX}px`;
+      trailSpark.style.top = `${e.clientY}px`;
+      trailSpark.style.width = '6px';
+      trailSpark.style.height = '6px';
+      trailSpark.style.transition = 'opacity 0.5s ease-out';
+      document.body.appendChild(trailSpark);
+      setTimeout(() => {
+        trailSpark.style.opacity = '0';
+        setTimeout(() => trailSpark.remove(), 500);
+      }, 100);
+    });
   </script>
 </body>
 </html>
