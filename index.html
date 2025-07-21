@@ -14,10 +14,16 @@
       overflow: hidden;
     }
 
+    .banner {
+      width: 100%;
+      height: 200px;
+      background: url('YOUR_BANNER_URL_HERE') center center no-repeat;
+      background-size: cover;
+      box-shadow: 0 0 20px #ff1a1a;
+    }
+
     .intro {
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       background: linear-gradient(to bottom right, #1a0000, #440000);
@@ -46,7 +52,7 @@
 
     .portal {
       position: relative;
-      height: 100%;
+      height: calc(100% - 200px);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -73,11 +79,34 @@
       margin-bottom: 20px;
     }
 
-    .description {
-      font-size: 1em;
-      color: #eeeeee;
+    .about-card {
       margin-bottom: 30px;
-      line-height: 1.6;
+      position: relative;
+      background: #1a0000;
+      color: #fff;
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 0 10px #990000;
+      transition: 0.5s ease-in-out;
+      cursor: default;
+    }
+
+    .about-card::after {
+      content: "YIN GAMING is the passion project of a small content creator with a big heart. I love meeting new people, diving into video games, and building a vibrant community. Every upload, every stream is a step toward becoming the best content creator I can be.";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 15px;
+      color: #eeeeee;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+      pointer-events: none;
+    }
+
+    .about-card:hover::after {
+      opacity: 1;
     }
 
     .link-button {
@@ -107,7 +136,7 @@
       background: url('https://pngimg.com/uploads/cherry_blossom/cherry_blossom_PNG12.png') no-repeat center;
       background-size: contain;
       animation: drift 14s linear infinite;
-      opacity: 0.4;
+      opacity: 0.3;
       pointer-events: none;
     }
 
@@ -118,6 +147,8 @@
   </style>
 </head>
 <body>
+  <div class="banner"></div>
+
   <div class="intro">
     <h1>Welcome to YIN GAMING 🗡️</h1>
   </div>
@@ -125,9 +156,7 @@
   <div class="portal">
     <div class="glass-panel">
       <h2>Connect with YIN</h2>
-      <div class="description">
-        YIN GAMING is the passion project of a small content creator with a big heart. I love meeting new people, diving into video games, and building a vibrant community. Every upload, every stream is a step toward becoming the best content creator I can be. Come along for the ride!
-      </div>
+      <div class="about-card">Hover to reveal my mission 💬</div>
       <a href="https://discord.gg/unBKrjQfpP" class="link-button" target="_blank">Discord</a>
       <a href="https://m.twitch.tv/gaming_yin" class="link-button" target="_blank">Twitch</a>
       <a href="https://x.com/yin_gaming_yt?s=" class="link-button" target="_blank">X (Twitter)</a>
@@ -135,7 +164,6 @@
     </div>
   </div>
 
-  <!-- Cherry blossom petals -->
   <script>
     for (let i = 0; i < 30; i++) {
       const petal = document.createElement('div');
