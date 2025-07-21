@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YIN Links</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff0f5;
+      text-align: center;
+      overflow: hidden;
+      padding: 50px;
+      position: relative;
+    }
+    h1 {
+      color: #88226b;
+      margin-bottom: 40px;
+    }
+    .link-button {
+      display: block;
+      margin: 15px auto;
+      padding: 15px 30px;
+      width: 240px;
+      background-color: #ffb6c1;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .link-button:hover {
+      background-color: #ff69b4;
+    }
+    .petal {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('https://pngimg.com/uploads/cherry_blossom/cherry_blossom_PNG12.png') no-repeat center;
+      background-size: contain;
+      animation: fall 10s linear infinite;
+      opacity: 0.8;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-10%) rotate(0deg);
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Connect with YIN 🌸</h1>
+  <a href="https://discord.gg/unBKrjQfpP" class="link-button" target="_blank">Discord</a>
+  <a href="https://m.twitch.tv/gaming_yin" class="link-button" target="_blank">Twitch</a>
+  <a href="https://x.com/yin_gaming_yt?s=" class="link-button" target="_blank">X (Twitter)</a>
 
+  <!-- Cherry blossom petals -->
+  <script>
+    for (let i = 0; i < 20; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.style.left = `${Math.random() * 100}vw`;
+      petal.style.animationDuration = `${6 + Math.random() * 6}s`;
+      document.body.appendChild(petal);
+    }
+  </script>
+</body>
+</html>
